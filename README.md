@@ -112,3 +112,12 @@ After reaching a visually acceptable level, I used Twiddle to optimize the value
 * Twiddle did certainly a better job than me, but the process was relatively slow. Both the initial simulation time before start of accumulation of error as well as the total time of accumulation were set without detailed justifications. I believe these parameters should be important both for accuracy and speed of the process. However, the final results seem to be acceptable.
 
 * Although I was not able to quantify this observation, I got a feeling that the behavior of the car changed if I had print-outs on or off. My interpretation was that it was due to the impact on the socket communication and especially between the Windows machine and Ubuntu virrtual machine. To avoid such problems the sampling interval needs to be kept constant.
+
+# Results
+After completion of the implementation and tuning of parameter as explained above the car in the simulation was controlled with the two PID controllers, one for speed and one for steering. The controllers were capable to keep the car in the middle of the lane and at given speed of 20. A video recording of the simulated driving can be found in [./videos/PID_driver.mp4](./videos/PID_driver.mp4).
+
+Judging from the video, one might suspect that the lane is modelled as linear segments. This can be seen as the car changes directions at some given points along the track and not in a continuous manner. These points are noticed frequently and periodically. In addition, at some points, like at entrance of the bridge and just before and after leaving the bridge, there are some disturbances. I believe these are also from the reference data.
+
+The tuning was done at speed set to 20, but with the same parameters it can drive at 30 many laps, without problems. If you wish to do so, you need to set the `set_speed = 20;` at line 146 in [./src/main.cpp](./src/main.cpp).
+
+At speed of 40, the car went off the track after some driving time.
